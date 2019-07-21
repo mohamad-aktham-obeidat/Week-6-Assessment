@@ -37,13 +37,24 @@ Ex: addKeyPowerIndex(arrOfObj2)
   {2: 4, c: 'duck'}
 ]   
 */
-
-function addKeyPowerIndex() {
+var arrOfObj1 = [
+  { a: 12 },
+  { b: 5 },
+  { c: 16 },
+  { d: 4 },
+  { e: 3 }
+]
+function addKeyPowerIndex(objArray) {
   // WRITE YOUR CODE UNDER THIS LINE  
-
+  var newArray = [];
+  objArray.forEach((element,i) => {
+    element[i]=i*i;
+    newArray.push(element)
+  });
+  return newArray;
 }
-
-
+console.log(addKeyPowerIndex(arrOfObj1))
+console.log("__________________________________________________________________")
 
 
 
@@ -64,10 +75,17 @@ Ex: decreseBy(arrOfNum1,-6)
 => [83, 11, 39]
 */
 
-function decreseBy() {
+function decreseBy(array, number) {
   // WRITE YOUR CODE UNDER THIS LINE 
+  return array.map(element => {
+    return element - number;
+  })
 
 }
+var arrOfnum1 = [77,5,33]
+console.log(decreseBy(arrOfnum1,10))
+console.log(decreseBy(arrOfnum1,-6))
+console.log("__________________________________________________________________")
 
 
 
@@ -102,11 +120,21 @@ Ex: nameLongerThan(arrOfObj4,6)
 ]
 */
 
-function nameLongerThan() {
-  // WRITE YOUR CODE UNDER THIS LINE         
+function nameLongerThan(objArray, num) {
+  // WRITE YOUR CODE UNDER THIS LINE 
+  return objArray.filter (element =>{
+    return element['name'].length > num
+  })
 }
-
-
+var arrOfObj4 = [
+  { name: "alex" },
+  { name: "mercer"},
+  { name: "alice" },
+  { name: "zaheer"},
+  { name: "elizabeth"}
+]
+console.log(nameLongerThan(arrOfObj4,4));
+console.log("__________________________________________________________________")
 
 
 
@@ -133,9 +161,22 @@ Ex: avgLength(arrOfObj4,"food")
 => 6.8
 */
 
-function avgLength() {
+function avgLength(objsArray, key) {
   // WRITE YOUR CODE UNDER THIS LINE         
+  return objsArray.reduce((previous, current) => {
+    return previous + current[key].length
+  }, 0) / objsArray.length;
 
 }
+
+var arrOfObj4 = [
+  { name: "alex", food: "fried chiken" },
+  { name: "mercer", food: "pizaa" },
+  { name: "alice", food: "burger" },
+  { name: "zaheer", food: "hot dog" },
+  { name: "elizabeth", food: "eggs" }
+]
+console.log(avgLength(arrOfObj4,"name"))
+console.log(avgLength(arrOfObj4,"food"))
 
 // Good luck :)
